@@ -1,31 +1,63 @@
-for(var i = 0; i < document.querySelectorAll(".box").length; i++ ){
+// for(var i = 0; i < document.querySelectorAll(".box").length; i++ ){
 
-/*   An event listner for keypress listens in document      */
-    document.addEventListener("keydown", (event) =>{
-        // console.log(event.key);
-        document.querySelector(`.${event.key}`).classList.add("button-white");
-        setTimeout( () =>{
-            document.querySelector(`.${event.key}`).classList.remove("button-white");
-        }, 100 );
+// /*   An event listner for keypress listens in document      */
+//     document.addEventListener("keydown", (event) =>{
+//         // console.log(event.key);
+//         document.querySelector(`.${event.key}`).classList.add("button-white");
+//         setTimeout( () =>{
+//             document.querySelector(`.${event.key}`).classList.remove("button-white");
+//         }, 100 );
 
-        audioTrack(event.key);    
-    });
-/*  --------------------------------------------------------  */
+//         audioTrack(event.key);    
+//     });
+// /*  --------------------------------------------------------  */
+
+// /*   An event listner for click listens for box class only     */
+//     document.querySelectorAll(".box")[i].addEventListener("click", function () {
+//         // console.log(this.innerHTML);
+//         this.classList.add("button-white");
+//         setTimeout(() => {
+//             this.classList.remove("button-white");
+//         }, 100);
+        
+//         audioTrack(this.innerHTML);    
+//     });
+// /*  --------------------------------------------------------  */
+
+// }
+
+
+/*   -------------_- Using J-query -_----------------        */
 
 /*   An event listner for click listens for box class only     */
-    document.querySelectorAll(".box")[i].addEventListener("click", function () {
-        // console.log(this.innerHTML);
-        this.classList.add("button-white");
-        setTimeout(() => {
-            this.classList.remove("button-white");
-        }, 100);
-        
-        audioTrack(this.innerHTML);    
-    });
+$('.box').on('click', function() {
+       
+       audioTrack($(this).text());
+       $(`.${$(this).text()}`).addClass('button-white');
+       setTimeout( () =>{
+          $(`.${$(this).text()}`).removeClass('button-white'); 
+        }, 100); 
+});
+/*  --------------------------------------------------------  */
+
+/*   An event listner for keypress listens in document      */
+$(document).on('keydown', function(e) {
+       
+    audioTrack(e.key);
+    $(`.${e.key}`).addClass('button-white');
+    setTimeout( () =>{
+       $(`.${e.key}`).removeClass('button-white');
+     }, 100); 
+});
 /*  --------------------------------------------------------  */
 
 
-}
+
+
+
+
+
+
 
 
 
